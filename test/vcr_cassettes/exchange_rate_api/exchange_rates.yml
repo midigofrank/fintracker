@@ -1,0 +1,29 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://v6.exchangerate-api.com/v6/test_api_key/latest/USD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.13.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 31 Jul 2024 00:00:00 GMT
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"result":"success","documentation":"https://www.exchangerate-api.com/docs","terms_of_use":"https://www.exchangerate-api.com/terms","time_last_update_unix":1722384000,"time_last_update_utc":"Wed, 31 Jul 2024 00:00:00 +0000","time_next_update_unix":1722470400,"time_next_update_utc":"Thu, 01 Aug 2024 00:00:00 +0000","base_code":"USD","conversion_rates":{"GBP":0.785476,"EUR":0.90,"USD":1.0}}'
+  recorded_at: Wed, 31 Jul 2024 00:00:00 GMT
+recorded_with: VCR 6.3.1

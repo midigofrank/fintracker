@@ -3,6 +3,8 @@ class Setting < RailsSettings::Base
   cache_prefix { "v1" }
 
   field :synth_api_key, type: :string, default: ENV["SYNTH_API_KEY"]
+  field :exchange_rate_api_key, type: :string, default: ENV["EXCHANGE_RATE_API_KEY"]
+  field :exchange_rate_provider, type: :string, default: ENV.fetch("EXCHANGE_RATE_PROVIDER", "synth")
   field :openai_access_token, type: :string, default: ENV["OPENAI_ACCESS_TOKEN"]
 
   field :require_invite_for_signup, type: :boolean, default: false

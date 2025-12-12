@@ -6,7 +6,19 @@ import_market_data:
   args:
     mode: "full"
     clear_cache: false
-  
+
+import_exchange_rates_morning:
+  cron: "0 8 * * *" # 8:00 AM UTC daily (covers all timezones)
+  class: "ImportExchangeRatesJob"
+  queue: "scheduled"
+  description: "Imports exchange rates in the morning"
+
+import_exchange_rates_evening:
+  cron: "0 20 * * *" # 8:00 PM UTC daily
+  class: "ImportExchangeRatesJob"
+  queue: "scheduled"
+  description: "Imports exchange rates in the evening"
+
 clean_syncs:
   cron: "0 * * * *" # every hour
   class: "SyncCleanerJob"

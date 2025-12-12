@@ -52,6 +52,10 @@ class MarketDataImporter
         clear_cache: clear_cache
       )
     end
+
+    ProviderApiUsage.track_usage_for(provider: ExchangeRate.provider, concept: :exchange_rates)
+  rescue => e
+    Rails.logger.error("Failed to track API usage for exchange rates: #{e.message}")
   end
 
   private

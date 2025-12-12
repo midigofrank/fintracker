@@ -40,6 +40,14 @@ class Provider::Registry
         Provider::Synth.new(api_key)
       end
 
+      def exchange_rate_api
+        api_key = ENV.fetch("EXCHANGE_RATE_API_KEY", Setting.exchange_rate_api_key)
+
+        return nil unless api_key.present?
+
+        Provider::ExchangeRateApi.new(api_key)
+      end
+
       def plaid_us
         config = Rails.application.config.plaid
 
@@ -92,13 +100,13 @@ class Provider::Registry
     def available_providers
       case concept
       when :exchange_rates
-        %i[synth]
+        %i[synth exchange_rate_api]
       when :securities
         %i[synth]
       when :llm
         %i[openai]
       else
-        %i[synth plaid_us plaid_eu github openai]
+        %i[synth exchange_rate_api plaid_us plaid_eu github openai]
       end
     end
 end

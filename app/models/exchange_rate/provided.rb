@@ -4,7 +4,11 @@ module ExchangeRate::Provided
   class_methods do
     def provider
       registry = Provider::Registry.for_concept(:exchange_rates)
-      registry.get_provider(:synth)
+      provider_name = ENV.fetch("EXCHANGE_RATE_PROVIDER", Setting.exchange_rate_provider)
+      registry.get_provider(provider_name.to_sym)
+    rescue Provider::Registry::Error => e
+      Rails.logger.warn("Exchange rate provider '#{provider_name}' not found or not configured: #{e.message}")
+      nil
     end
 
     def find_or_fetch_rate(from:, to:, date: Date.current, cache: true)
