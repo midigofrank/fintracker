@@ -29,7 +29,7 @@ services:
       - maybe_net
 
   web:
-    image: ghcr.io/maybe-finance/maybe:latest
+    image: ghcr.io/midigofrank/fintracker:latest
     volumes:
       - app-storage:/rails/storage
     restart: unless-stopped
@@ -44,7 +44,7 @@ services:
       - maybe_net
 
   worker:
-    image: ghcr.io/maybe-finance/maybe:latest
+    image: ghcr.io/midigofrank/fintracker:latest
     command: bundle exec sidekiq
     restart: unless-stopped
     depends_on:
