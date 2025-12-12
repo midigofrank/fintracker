@@ -115,3 +115,5 @@ group :test do
   gem "climate_control"
   gem "simplecov", require: false
 end
+
+gem "tidewave", "~> 0.4.1", group: :development
